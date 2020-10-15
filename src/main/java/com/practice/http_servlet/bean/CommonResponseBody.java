@@ -11,16 +11,11 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class CommonResponseBody extends ResponseBody {
     private Object data;
 
-    public CommonResponseBody(int code ) {
-        super(code);
-    }
-
-    public CommonResponseBody(int code, String msg) {
-        super(code, msg);
+    public CommonResponseBody() {
+        super(0);
     }
 
     public CommonResponseBody(int code, Object data) {
