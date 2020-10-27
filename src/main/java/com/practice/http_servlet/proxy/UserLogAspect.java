@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
  * @date 2020/10/27 5:34 下午
  */
 @Data
-public class UserHandler implements InvocationHandler {
+public class UserLogAspect implements InvocationHandler {
 
     /**
      * 日志处理
@@ -22,12 +22,12 @@ public class UserHandler implements InvocationHandler {
     /**
      * 用户类
      */
-    private User user;
+    private Object object;
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         myLogger.beforeLogin();
-        Object res = method.invoke(user, args);
+        Object res = method.invoke(object, args);
         myLogger.afterLogin();
         return res;
     }

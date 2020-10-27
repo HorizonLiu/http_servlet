@@ -16,11 +16,11 @@ public class ProxyMain {
         User user = new UserImpl();
 
         // 代理类，代理处理用户登录功能。在用户登录前可执行userLogger中的操作
-        UserHandler userHandler = new UserHandler();
+        UserLogAspect userHandler = new UserLogAspect();
         userHandler.setMyLogger(userLogger);
-        userHandler.setUser(user);
+        userHandler.setObject(user);
 
-        User proxy = (User) Proxy.newProxyInstance(user.getClass().getClassLoader(), user.getClass().getInterfaces(), userHandler);
+        User proxy = (User) Proxy.newProxyInstance(User.class.getClassLoader(), new Class[]{User.class}, userHandler);
         proxy.login();
     }
 }
