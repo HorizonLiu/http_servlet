@@ -13,7 +13,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ResponseBody {
-    private int code;
+
+    private int code = 0;
     private String msg;
 
     public ResponseBody(int code) {
